@@ -8,12 +8,16 @@ loadlibrary('smClient64.dll','./smClient.h');
 %abrir la memoria compartida de tipo enteros
 calllib('smClient64','openMemory','memoriaEnteros',1);
 
-%recorremos el array vector
-for pos = 1:length(vector)
-    %obtenemos el indice de las memoria( matlab inicia en 1)
-    indice_memoria = (pos-1);
-    %escribimos en la memoria
-    calllib('smClient64','setInt','memoriaEnteros',indice_memoria,vector(pos))
+while true
+    %recorremos el array vector
+    for pos = 1:length(vector)
+        %obtenemos el indice de las memoria( matlab inicia en 1)
+        indice_memoria = (pos-1);
+        %obtenemos el valor 
+        valor = vector(pos);
+        %escribimos en la memoria
+        calllib('smClient64','setInt','memoriaEnteros',indice_memoria,valor)
+    end
 end
 
 %leemos desde memoria
