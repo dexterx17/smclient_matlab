@@ -1,6 +1,6 @@
 %creamos u obtenemos los datos que queremos enviar hacia le memoria
 %compartida
-vector = [3,4,5,2,3,4];
+vector = [2,2,5,8,2,2];
 
 %importar la dll de la memoria
 loadlibrary('smClient64.dll','./smClient.h');
@@ -8,9 +8,13 @@ loadlibrary('smClient64.dll','./smClient.h');
 %abrir la memoria compartida de tipo enteros
 calllib('smClient64','openMemory','memoriaEnteros',1);
 
-
-%escribimos en la memoria
-calllib('smClient64','setInt','memoriaEnteros',1,5)
+%recorremos el array vector
+for pos = 1:length(vector)
+    %obtenemos el indice de las memoria( matlab inicia en 1)
+    indice_memoria = (pos-1);
+    %escribimos en la memoria
+    calllib('smClient64','setInt','memoriaEnteros',indice_memoria,vector(pos))
+end
 
 %leemos desde memoria
 retInt = calllib('smClient64','getInt','memoriaEnteros',1)
