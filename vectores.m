@@ -1,3 +1,5 @@
+clc;
+clear all;
 %creamos u obtenemos los datos que queremos enviar hacia le memoria
 %compartida
 vector = [2,2,5,8,2,2];

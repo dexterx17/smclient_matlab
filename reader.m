@@ -1,3 +1,5 @@
+clc;
+clear all;
 %importar la dll de la memoria
 loadlibrary('smClient64.dll','./smClient.h');
 
